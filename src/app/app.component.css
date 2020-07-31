@@ -1,0 +1,68 @@
+:host ::ng-deep button {
+  margin-right: .9em;
+  margin-bottom:.9em;
+}
+ul{
+  list-style: none;
+  font: 10px sans-serif;
+}
+
+#breadcrumb{
+margin-top:0px;
+}
+
+.ui-breadcrumb {
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  padding: 0.571em 1em;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: .75rem 1rem;
+  list-style: none;
+  background-color: transparent;
+  border-radius: .25rem;
+}
+
+/* //// */
+
+
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+#sidebar-wrapper .sidebar-heading {
+  font-size: 1.2rem;
+}
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+#page-content-wrapper {
+  min-width: 100vw;
+}
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: -240px !important;
+}
+
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left:0;
+  }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+
