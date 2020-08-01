@@ -29,7 +29,7 @@ export class AppComponent implements OnInit{
 					  });
 ///breadcrumb
 					  this.items = [
-						{label:'Categories'},
+						{label:'primengtableComponent'},
 					];
 					
 					this.home = {icon: 'pi pi-home'}; 

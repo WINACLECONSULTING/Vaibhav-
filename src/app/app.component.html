@@ -44,56 +44,19 @@
                      <button class="btn" id="menu-toggle"><i class="pi pi-power-off"  style="color: white; font-size: 2em"></i></button>
     </nav> -->
          <!--Navbar -->
-         <!-- <nav class="mb-4 navbar navbar-expand-lg navbar-dark cyan" >
-          <a class="navbar-brand font-bold" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="#"><i class="fa fa-envelope"></i> Contact <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#"><i class="fa fa-gear"></i> Settings</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile </a>
-                      <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
-                          <a class="dropdown-item" href="#">My account</a>
-                          <a class="dropdown-item" href="#">Log out</a>
-                      </div>
-                  </li>
-              </ul>
-          </div>
-      </nav> -->
-      <!--/.Navbar -->
 
-            <!--Navbar -->
-            <nav class="mb-4 navbar navbar-expand-lg navbar-dark purple lighten-1" style="background-color:rgb(0,176,240);">
-              <button class="btn" id="menu-toggle"><i class="pi pi-bars"  style="color: white; font-size: 2em"></i></button>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-5" aria-controls="navbarSupportedContent-5" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent-5">
-                    <ul class="navbar-nav ml-auto nav-flex-icons">
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light">1 <i class="fa fa-envelope"></i></a>
-                        </li> 
-                      <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light">1 <i class="fa fa-envelope"></i></a>
-                        </li>
-                       <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light">1 <i class="fa fa-envelope"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-      
+      <ul class="topnav" style="background-color:rgb(0,176,240);">
+        <li><button class="btn" id="menu-toggle"><i class="pi pi-bars"  style="color: white; font-size: 2em"></i></button></li>
+        <li class="right"><button class="btn"><i class="pi pi-power-off"  style="color: white; font-size: 2em;"></i></button></li>
+        <li class="right"><button class="btn"><i class="pi pi-bell"  style="color: white; font-size: 2em;"></i></button></li>
+        <li class="right"><a href="http://www.winacle.co.in">WINACLE CONSULTING ISUSING ANGULAR MATERIALS</a></li>
+      </ul>
+            <!--Navbar -->      
     <div style="margin-left: 12px;">
       <p-breadcrumb [model]="items" class="breadcrumb" [home]="home" style=" padding:0px; margin-left:12px;border-bottom: 1px solid #00b0f0;" ></p-breadcrumb>
     </div>
+
+    <div class="container-fluid "> 
       <div class="row" style="margin-left:10px;">
         <div class="col-sm-12" >
                     <div class="well">
@@ -128,8 +91,8 @@
               <div class="col-sm-4" >
                 <div class="well">
                   <span class="ui-float-label" >
-                    <input id="float-input" type="text" size="30"style="height:50px; weight:500px"  pInputText> 
-                    <label for="float-input">Collaboration Area</label>
+                    <textarea id="float-input"  pInputTextarea></textarea>
+    <label for="float-input">Collaboration Area</label>
                 </span>
                   </div>
             </div>
@@ -143,7 +106,10 @@
                       </div>
                 </div>
                 <div class="col-sm-4" >
-                    <div class="well" style="height: 600px;">
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                      <div class="well">
                         <h4>Sale</h4>
                         <div class="p-field p-grid">
                           <label for="Company" class="p-col-fixed" style="width:100px">Company</label>
@@ -152,151 +118,15 @@
                           </div>
                       </div>
                       </div>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    </div>
+
   </div>
   <!-- /#page-content-wrapper -->
 </div>
-<!-- /#wrapper -->
-
-<!-- <div class="container-fluid content {{storedTheme}}">
-  <div class="row">
-    <div class="col-sm-2">
-      <h2>Logo</h2>
-      <div class="theme-options">
-        <div class="theme" id="theme-white" [ngClass]="(storedTheme === 'theme-white') ? 'active' : ''" (click)="setTheme('theme-white')"></div>
-        <div class="theme" id="theme-blue" [ngClass]="(storedTheme === 'theme-blue') ? 'active' : ''" (click)="setTheme('theme-blue')"></div>
-        <div class="theme" id="theme-orange" [ngClass]="(storedTheme === 'theme-orange') ? 'active' : ''" (click)="setTheme('theme-orange')"></div>
-      </div>
-    </div>
-    <br>
-        <div class="col-sm-10">
-            <div class="row">
-                <div class="col-sm-12" style="margin-top: 1em; margin-bottom: 1em;  text-align: center;">
-                        <h4><a href="http://www.winacle.co.in">WINACLE CONSULTING ISUSING ANGULAR MATERIALS</a> </h4>
-                </div>
-                <div class="col-sm-12">
-                    <div class="well">
-                        <button pButton type="button" label="Enterprise Company Setup" routerLink="enterprisecompanysetup"> </button>
-                        <button pButton type="button" label="Call SQL" routerLink="sqlcreatetable"> </button>
-                        <button pButton type="button" label="primengtableComponent" routerLink="/primengtableComponent"> </button>
-                      </div>
-                </div>
-            </div>     
-           
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-2">
-        <div class="row">
-            <div class="col-sm-12" >
-                <div class="well" style="height:auto;">
-                  <h3>Organization</h3>
-                  <div>
-                    <h4>Type</h4>
-                    <ul>
-                      <li><p-radioButton name="groupname" value="val1" label="Sale" ></p-radioButton></li>
-                      <li><p-radioButton name="groupname" value="val1" label="Purchase" ></p-radioButton></li>
-                      <li><p-radioButton name="groupname" value="val1" label="Project"  ></p-radioButton></li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4>Time</h4>
-                    <ul>
-                      <li><p-radioButton name="groupname" value="val1" label="Year"  ></p-radioButton></li>
-                      <li><p-radioButton name="groupname" value="val1" label="Quarter"  ></p-radioButton></li>
-                      <li><p-radioButton name="groupname" value="val1" label="Month"  ></p-radioButton></li>
-                      <li><p-radioButton name="groupname" value="val1" label="Week"  ></p-radioButton></li>
-                      <li><p-radioButton name="groupname" value="val1" label="Day"  ></p-radioButton></li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4>Show</h4>
-                    <ul>
-                      <li><p-radioButton name="groupname" value="val1" label="Budget"  ></p-radioButton></li>
-                      <li><p-radioButton name="groupname" value="val1" label="Estimate"  ></p-radioButton></li>
-                      <li><p-radioButton name="groupname" value="val1" label="Actual"  ></p-radioButton></li>
-                    </ul>
-                  </div>
-                  </div>
-            </div>
-            <div class="col-sm-12">
-                <div>
-                    <app-gmap></app-gmap>
-                  </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-10 ">
-        <div class="row">
-            <div class="col-sm-12" >
-                <div class="row">
-                  <div class="col-sm-8 well" >
-                    <div class="row">
-                      <div class="col-sm-12" >
-                        <div class="calendar" >
-                          <button pButton type="button" label="New Year" > </button>
-                          <button pButton type="button" label="Current Year" > </button>
-                          <button pButton type="button" label="Last Year" > </button>
-                          <button pButton type="button" label="Last-1 Year" > </button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-12" >
-                  <button pButton type="button" label="Save" class="ui-button-success"> </button>
-                  <button pButton type="button" label="Add" class="ui-button-success"> </button>
-                  <button pButton type="button" label="Delete" class="ui-button-success"> </button>
-                  <button pButton type="button" label="Undo" class="ui-button-success"> </button>
-                  <button pButton type="button" label="View Workflow" class="ui-button-success"> </button>
-                </div>
-              </div>
-                  </div>
-                  <div class="col-sm-4" >
-                    <div class="row">
-                      <div class="col-sm-12" >
-                        <span class="ui-float-label" >
-                          <input id="float-input" type="text" size="30"style="height:50px;"  pInputText> 
-                          <label for="float-input" style="margin-left: 5em;">Collaboration Area</label>
-                      </span>
-                      </div>
-                    </div>
-                  </div>               
-                  </div>
-            </div>
-            <div class="col-sm-12" >
-                <div class="row">
-                    <div class="col-sm-8" >
-                        <div style="height: 600px;" class="center">
-                            <router-outlet></router-outlet>
-                          </div>
-                    </div>
-                    <div class="col-sm-4" >
-                        <div class="well" style="height: 600px;">
-                            <h4>Sale</h4>
-                            <div class="p-field p-grid">
-                              <label for="Company" class="p-col-fixed" style="width:100px">Company</label>
-                              <div class="p-col">
-                                  <input id="Company" type="text" pInputText> 
-                              </div>
-                          </div>
-                          </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-
-    </div>
-
-  </div>
-
-
-
-
-</div>
-
-  -->
