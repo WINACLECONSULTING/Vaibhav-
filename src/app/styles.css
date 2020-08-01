@@ -1,0 +1,71 @@
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/nova-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:host ::ng-deep button {
+    margin-right: 5px;
+}
+
+.theme{
+cursor: pointer;
+width: 20px;
+height: 20px;
+border-radius: 4px;
+margin: 2px 10px;
+border: 1px solid rgb(0, 0, 0);
+display: inline-block;
+opacity: 0.5;
+}
+.theme :active{
+    opacity: 2;
+    border: 6px solid black;
+}
+#theme-white{
+background-color: #ffffff;
+}
+#theme-blue{
+background-color:#1e41c1;
+}
+#theme-orange{
+background-color: #b64b1e;
+}
+
+/* white style */
+.theme-white {
+    background-color: #ffffff;
+}
+.theme-white .well{
+    background-color: #c4c3c3;
+}
+.theme-white .well button{
+    background-color: rgb(111, 0, 255);
+    color: rgb(255, 255, 255);
+}
+.theme-white .calendar  button{
+    background-color: rgb(255, 0, 212);
+    color: #fff;
+}
+
+/* blue style */
+.theme-blue {
+    background-color: #6885ec;
+}
+.theme-blue .well{
+    background-color: rgb(123, 224, 250);
+    color: #fff;
+}
+.theme-blue .well button{
+    background-color: rgb(123, 224, 250);
+    color: #fff;
+}
+.theme-blue .calendar  button{
+    background-color: rgb(243, 247, 1);
+    color: #fff;
+}
+.theme-blue .center{
+    background-color: rgb(255, 255, 255);
+    color: #fff;
+}
