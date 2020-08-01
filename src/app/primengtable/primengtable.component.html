@@ -1,0 +1,168 @@
+
+<div>
+ <!--<p-paginator [rows]="10" totalRecords="100" (onPageChange)="paginate($event)">
+  </p-paginator> -->
+  <p-table 
+    [columns]="columnDefs" 
+    [value]="Companies"
+    [rows]="10" 
+    [paginator]="true" 
+    [rowsPerPageOptions]="[5,10,20,50]" 
+    
+    
+    [pageLinks]="5" 
+    [responsive]="true" 
+    sortField="Companies.regentid "
+    rowGroupMode="subheader"
+    groupField="Companies.regentid " 
+    expandableRowGroups="true"
+    
+    
+    editMode ="row"
+    dataKey = "regentid"
+    [resizableColumns] = "true"
+
+    selectionMode="multiple" 
+
+    [pSelectableRowDblClick]="true" 
+    
+    (onRowSelect)="onRowSelect($event)"
+    (onRowUnselect)="onRowUnselect($event)"
+    (onEditInit)="onEditInit($event)" 
+    (onEditCancel)="onEditCancel($event)"
+    (onPageChange)="paginate($event)"
+    #dt
+  >
+
+  <!--<p-table [value]="Companies"> -->
+
+
+    <ng-template pTemplate="header" let-columns>
+      <tr >
+        <th  *ngFor="let columnDefs of columns"  style="background-color: rgb(0, 176, 240); color:white; height: 10px;" colspan="2">
+          {{columnDefs.header}}
+        </th>
+      </tr>
+      <tr  >
+        <th style="height: 10px;" *ngFor="let columnDefs of columns" [ngSwitch]="columnDefs.field" colspan="2">
+          <input style="height: 20px;" *ngSwitchCase="'regentid'" pInputText type="text" size="10" (input)="dt.filter($event.target.value, columnDefs.field, 'contains')" />
+          <input style="height: 20px;" *ngSwitchCase="'regenttype'" pInputText type="text" size="10" (input)="dt.filter($event.target.value, columnDefs.field, 'contains')" />
+          <input style="height: 20px;" *ngSwitchCase="'regentname'" pInputText type="text" size="10" (input)="dt.filter($event.target.value, columnDefs.field, 'contains')" />
+          <input style="height: 20px;" *ngSwitchCase="'regentaddrnum'" pInputText type="text" size="10" (input)="dt.filter($event.target.value, columnDefs.field, 'contains')" />
+           </th>
+      </tr>
+   </ng-template>
+
+    <ng-template pTemplate="body" let-Companies let-editing="editing" let-ri="rowIndex" >
+  
+      <tr [pSelectableRow]="Companies" [pEditableRow]="Companies" (dblclick)="onRowDblClick($event, Companies)"  >
+          <td colspan="2" >{{Companies.regentid }}</td>
+          <td colspan="2" >
+            <p-cellEditor style="height: 10px;" >
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="Companies.regenttype" required >
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{Companies.regenttype}}
+              </ng-template>
+              
+            </p-cellEditor>
+          </td>
+ 
+
+
+          <td colspan="2">
+            <p-cellEditor style="height: 10px;">
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="Companies.regentname" required >
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{Companies.regentname }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td style="border-right: 1px solid transparent;">
+            <p-cellEditor style="height: 10px;" >
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="Companies.regentaddrnum" required >
+              </ng-template>
+              <ng-template pTemplate="output" >
+                {{Companies.regentaddrnum }} 
+                </ng-template>
+            </p-cellEditor>
+          </td>
+          <td >
+            <p-cellEditor>
+              <ng-template pTemplate="output">
+                <button pButton icon="pi pi-caret-right" (click)="togglePopup(template)"></button>
+              </ng-template>
+            </p-cellEditor>
+          </td>
+
+          <td style="text-align:center">
+            <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                    class="ui-button-info" (click)="onRowEditInit(Companies)"></button>    
+            <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                    class="ui-button-success" style="margin-right: .5em" (click)="saveCompanyChanges(Companies,Companies.regentid)"></button>
+            <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                    class="ui-button-danger" (click)="onRowEditCancel(Companies, ri)"></button>
+                                <!-- <i *ngIf="!editing"type="button" (click)="onRowEditInit(Companies)" class="pi pi-pencil "></i>
+            <i *ngIf="editing" type="button" (click)="saveCompanyChanges(Companies,Companies.regentid)" class="pi pi-check"></i>
+            <i *ngIf="editing" type="button" (click)="onRowEditCancel(Companies, ri)" class="pi pi-times"></i> -->
+          </td>
+         
+      </tr>
+      
+    </ng-template>
+    <ng-template pTemplate="summary" let-rowData>
+      <div style="text-align:left" margin=10px>
+        <button pButton type="button" pButton icon="pi pi-plus" styleClass="ui-button-raised" [style]="{width: '75px'}" (click)="addNewCompany()" label="Add"></button>
+
+        <button pButton type="button" pButton icon="pi pi-save" styleClass="ui-button-raised" [style]="{width: '75px'}" (click)="saveAllChanges(selectedCompanies)" label="Save All"></button>
+      </div>
+    </ng-template>
+
+    
+  </p-table>
+
+
+  <p-dialog header="New Registered Entity Details" [(visible)]="displayDialog" [focusOnShow]="true" showEffect="fade" [modal]="true"  [style]="{width: '300px'}">
+    <div class="p-grid ui-fluid" *ngIf="company">
+        <div class="p-col-4">
+            <label for="regentid'">Registered Entity</label>
+        </div>
+        <div class="p-col-8">
+            <input pInputText id="regentid'" [(ngModel)]="company.regentid" autofocus />
+        </div>
+
+        <div class="p-col-4">
+            <label for="regenttype'">RE Type</label>
+        </div>
+
+        <div class="p-col-8">
+            <input pInputText id="regenttype'" [(ngModel)]="company.regenttype"  />
+        </div>
+        <div class="p-col-4">
+            <label for="regentname'">Name</label>
+        </div>
+        <div class="p-col-8">
+            <input pInputText id="regentname'" [(ngModel)]="company.regentname"  />
+        </div>
+
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button pButton type="button" icon="pi pi-times" iconPos="left" (click)="deleteCompany()" label="Delete" [style]="{width: '75px', background:'Red'}"></button>
+            <button pButton type="button" icon="pi pi-undo" iconPos="left" (click)="cancelDialogChange()" label="Cancel" [style]="{width: '75px'}"></button>
+            <button pButton type="button" icon="pi pi-check" iconPos="left" (click)="addsaveDialogClick()" label="Save" [style]="{width: '75px'}"></button>
+        </div>
+    </p-footer>
+  </p-dialog>
+
+</div>
+
+
+
+
+
+
