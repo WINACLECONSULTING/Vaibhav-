@@ -3,7 +3,7 @@
   <!-- Sidebar -->
   <div class="" id="sidebar-wrapper" style="background-color: rgb(110, 110, 110); width: 240px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
     <div style="width: 240px;"><img src="assets/WORD_LOGO.png"style="width: 240px; height:50px" > </div>
-    <div class="list-group list-group-flush" style="background-color: rgb(110, 110, 110); ">
+    <div class="list-group list-group-flush" style="background-color: rgb(110, 110, 110); padding:15px ">
       <h3 style="color:white">Organization</h3>
       <div style="color:white">
         <h4>Type</h4>
@@ -56,18 +56,20 @@
       <p-breadcrumb [model]="items" class="breadcrumb" [home]="home" style=" padding:0px; margin-left:12px;border-bottom: 1px solid #00b0f0;" ></p-breadcrumb>
     </div>
 
-    <div class="container-fluid "> 
-      <div class="row" style="margin-left:10px;">
-        <div class="col-sm-12" >
-                    <div class="well">
+    <div class="container-fluid " style="padding-left: 15px;"> 
+      <div class="row">
+        <!-- <div class="col-sm-12" >
                       <button pButton type="button" label="Enterprise Company Setup" routerLink="enterprisecompanysetup"> </button>
                       <button pButton type="button" label="Call SQL" routerLink="sqlcreatetable"> </button>
                       <button pButton type="button" label="primengtableComponent" routerLink="/primengtableComponent"> </button>
-                    </div>
-      </div>
+      </div> -->
         <div class="col-sm-12" >
             <div class="row">
-              <div class="col-sm-8" >
+              <div class="col-sm-3">
+                <button pButton type="button" label="Enterprise Company Setup" routerLink="enterprisecompanysetup"> </button>
+                <button pButton type="button" label="primengtableComponent" routerLink="/primengtableComponent"> </button>
+              </div>
+              <div class="col-sm-7" >
                 <div class="row">
                   <div class="col-sm-12" >
                     <div class="calendar" >
@@ -88,13 +90,11 @@
             </div>
           </div>
               </div>
-              <div class="col-sm-4" >
-                <div class="well">
+              <div class="col-sm-2" >
                   <span class="ui-float-label" >
                     <textarea id="float-input"  pInputTextarea></textarea>
     <label for="float-input">Collaboration Area</label>
                 </span>
-                  </div>
             </div>
               </div>
         </div>
