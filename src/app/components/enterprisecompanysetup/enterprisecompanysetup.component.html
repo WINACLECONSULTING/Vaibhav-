@@ -1,0 +1,171 @@
+<style type="text/css">
+    .ui-row-editor .ui-row-editor-pencil {
+        margin-left:8px;
+    }
+</style>
+ 
+<div>
+ <!--<p-paginator [rows]="10" totalRecords="100" (onPageChange)="paginate($event)">
+  </p-paginator> -->
+  <p-table 
+    [columns]="columnDefs" 
+    [value]="Companies"
+    [rows]="10" 
+    [paginator]="true" 
+    [rowsPerPageOptions]="[5,10,20,50]" 
+    
+    
+    [pageLinks]="5" 
+    [responsive]="true" 
+    sortField="Companies.regentid "
+    rowGroupMode="subheader"
+    groupField="Companies.regentid " 
+    expandableRowGroups="true"
+    
+    
+    editMode ="row"
+    dataKey = "regentid"
+    [resizableColumns] = "true"
+
+    selectionMode="multiple" 
+
+    [pSelectableRowDblClick]="true" 
+    
+    (onRowSelect)="onRowSelect($event)"
+    (onRowUnselect)="onRowUnselect($event)"
+    (onEditInit)="onEditInit($event)" 
+    (onEditCancel)="onEditCancel($event)"
+    (onPageChange)="paginate($event)"
+    #dt
+  >
+
+  <!--<p-table [value]="Companies"> -->
+
+    <ng-template pTemplate="caption">
+    Companies List
+      <div style="text-align: right">        
+          <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+      </div>
+    </ng-template>
+    
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let columnDefs of columns" >
+          {{columnDefs.header}}
+        </th>
+      </tr>
+
+      <tr>
+        <th *ngFor="let columnDefs of columns" [ngSwitch]="columnDefs.field">
+          <input *ngSwitchCase="'regentid'" pInputText type="text"
+            (input)="dt.filter($event.target.value, columnDefs.field, 'contains')" />
+        </th>
+      </tr>
+   </ng-template>
+
+    <ng-template pTemplate="body" let-Companies let-editing="editing" let-ri="rowIndex"  >
+  
+      <tr [pSelectableRow]="Companies" [pEditableRow]="Companies" (dblclick)="onRowDblClick($event, Companies)" >
+          <td>{{Companies.regentid }}</td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="Companies.regenttype" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{Companies.regenttype}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+           <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="Companies.regentname" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{Companies.regentname }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="Companies.regentaddrnum" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{Companies.regentaddrnum }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+
+          <td style="text-align:center">
+            <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                    class="ui-button-info" (click)="onRowEditInit(Companies)"></button>
+            <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                    class="ui-button-success" style="margin-right: .5em" (click)="saveCompanyChanges(Companies,Companies.regentid)"></button>
+            <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                    class="ui-button-danger" (click)="onRowEditCancel(Companies, ri)"></button>
+          </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary" let-rowData>
+      <div style="text-align:left" margin=10px>
+        <button pButton type="button" pButton icon="pi pi-plus" styleClass="ui-button-raised" [style]="{width: '75px'}" (click)="addNewCompany()" label="Add"></button>
+
+        <button pButton type="button" pButton icon="pi pi-save" styleClass="ui-button-raised" [style]="{width: '75px'}" (click)="saveAllChanges(selectedCompanies)" label="Save All"></button>
+      </div>
+    </ng-template>
+
+    
+  </p-table>
+
+<pre>{{selectedCompanies | json}}</pre>
+
+  <p-dialog header="New Registered Entity Details" [(visible)]="displayDialog" [focusOnShow]="true" showEffect="fade" [modal]="true"  [style]="{width: '300px'}">
+    <div class="p-grid ui-fluid" *ngIf="company">
+        <div class="p-col-4">
+            <label for="regentid'">Registered Entity</label>
+        </div>
+        <div class="p-col-8">
+            <input pInputText id="regentid'" [(ngModel)]="company.regentid" autofocus />
+        </div>
+
+        <div class="p-col-4">
+            <label for="regenttype'">RE Type</label>
+        </div>
+
+        <div class="p-col-8">
+            <input pInputText id="regenttype'" [(ngModel)]="company.regenttype"  />
+        </div>
+        <div class="p-col-4">
+            <label for="regentname'">Name</label>
+        </div>
+        <div class="p-col-8">
+            <input pInputText id="regentname'" [(ngModel)]="company.regentname"  />
+        </div>
+
+        <div class="p-col-4">
+            <label for="regentaddrnum'">Address Number</label>
+        </div>
+        <div class="p-col-8">
+            <input pInputText id="regentaddrnum'" [(ngModel)]="company.regentaddrnum"  />
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button pButton type="button" icon="pi pi-times" iconPos="left" (click)="deleteCompany()" label="Delete" [style]="{width: '75px', background:'Red'}"></button>
+            <button pButton type="button" icon="pi pi-undo" iconPos="left" (click)="cancelDialogChange()" label="Cancel" [style]="{width: '75px'}"></button>
+            <button pButton type="button" icon="pi pi-check" iconPos="left" (click)="addsaveDialogClick()" label="Save" [style]="{width: '75px'}"></button>
+        </div>
+    </p-footer>
+  </p-dialog>
+
+</div>
+
+
+
+
+
+
